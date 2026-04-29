@@ -1,5 +1,7 @@
 package com.example.tc2007b_2026_e3
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -7,12 +9,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.ContextCompat.startActivity
 import com.example.tc2007b_2026_e3.ui.theme.TC2007B2026E3Theme
 
 class MainActivity : ComponentActivity() {
@@ -31,6 +35,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    // Methods that capture the AMS Events
     override fun onStart() {
         super.onStart()
         Toast.makeText(this, "Executing onStart method", Toast.LENGTH_SHORT).show()
@@ -72,4 +77,21 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
     val myContext = LocalContext.current
     Toast.makeText(myContext, "Executing onCreate method", Toast.LENGTH_SHORT).show()
+
+
+    Button(onClick = {
+        val intent = Intent(myContext, SecondActivity::class.java)
+        myContext.startActivity(intent)
+
+    })
+    {
+        Text(text = "Go to Second Activity")
+    }
+
+
+    //TODO
+    //AlertDialog
+
+    //TODO
+    //Snackbar
 }
